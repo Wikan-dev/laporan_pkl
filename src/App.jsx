@@ -11,6 +11,7 @@ import figma from './assets/figma.png';
 import github from './assets/github.png';
 import react from './assets/react.png';
 import tailwind from './assets/tailwind.png';
+import { useState } from 'react';
 
 const Card = ({ bgColor, title, desc, srcc }) => {
   return (
@@ -68,16 +69,17 @@ const CardDetail = [
   },
 ]
 
+const [open, setOpen] = useState(false);
 
  return(
-  <div className='mx-8 mt-6'>
+  <div className='mx-8 mt-6 scroll-smooth transition-all duration-500 ease-in'>
     {/* header */}
     <div className='flex flex-row justify-between mb-5'>
       <img src={logo_ti} alt="ti" />
       <div className='flex flex-row mt-3 gap-[122px]'>
         <a href="#">Home</a>
         <a href="#">Tools</a> 
-        <a href="#">Projects</a>
+        <a href="#project">Projects</a>
         <a href="#">Informasi Umum</a>
         <a href="#">Penutup</a>
       </div>
@@ -99,7 +101,7 @@ const CardDetail = [
     <div className='h-screen'>
       <h1 className='my-10 relative top-5'>Informasi Umum</h1>
       <div className='flex flex-row gap-10'>
-        <div className='w-200 h-90 shrink-0 flex justify-center items-center bg-gray-400 rounded-br-[45px] shadow-[inset_0_0px_10px_rgba(0,0,0,0.6)]'>
+        <div className='w-180 h-90 shrink-0 flex justify-center items-center bg-gray-400 rounded-br-[45px] shadow-[inset_0_0px_10px_rgba(0,0,0,0.6)]'>
           <img src={logo} alt="logo" className='drop-shadow-xl/50 max-w-full max-h-full object-contain'/>
         </div>
         <div className='flex-1 gap-5 flex flex-col'>
@@ -108,9 +110,7 @@ const CardDetail = [
         </div>
       </div>
       <div className='flex flex-row-reverse gap-10'>
-        {/* <div className='w-200 h-90 shrink-0 flex justify-center items-center bg-gray-400 rounded-tl-[45px] shadow-[inset_0_0px_10px_rgba(0,0,0,0.6)] object-cover'>
-        </div> */}
-          <img src={visi_misi} alt="logo" className='object-cover w-200 h-100 rounded-tl-[45px] shadow-[inset_0_0px_10px_rgba(0,0,0,0.6)]'/>
+          <img src={visi_misi} alt="logo" className='object-cover w-180 h-100 rounded-tl-[45px] shadow-[inset_0_0px_10px_rgba(0,0,0,0.6)]'/>
         <div className='flex-1 gap-5 flex flex-col mt-10'>
           <h1 className='text-3xl font-bold'>Visi dan Misi</h1>
           <h1 className='font-bold text-2xl'>Visi:</h1>
@@ -133,16 +133,21 @@ const CardDetail = [
         {CardDetail.map((item, i) => (
           <Card key={i} {...item} />
         ))}
-        {/* <Card bgColor={"#2A2C2E"} title="React" desc="React adalah library JavaScript berbasis komponen yang mempermudah pembuatan UI dinamis dan efisien melalui Virtual DOM serta dukungan JSX." srcc={react} />
-
-        <Card bgColor={"#282A36"} title="Vscode" desc="Tailwind CSS adalah framework utility-first yang menyediakan kelas siap pakai untuk styling cepat, konsisten, dan mudah dikustomisasi langsung dari markup." srcc={vscode} />
-
-        <Card bgColor={"#000000"} title="Figma" desc="Figma adalah platform desain kolaboratif berbasis web yang digunakan untuk membuat antarmuka, prototipe interaktif, dan asset visual, dengan fitur real-time collaboration yang memudahkan tim bekerja secara simultan di satu proyek." srcc={figma} />
-
-        <Card bgColor={"#181616"} title="Github" desc="GitHub adalah platform berbasis web untuk menyimpan dan mengelola kode menggunakan Git, sekaligus memfasilitasi kolaborasi lewat fitur seperti pull request, issue tracking, dan version control agar pengembangan proyek bisa lebih terstruktur dan terkoordinasi." srcc={github} />
-
-        <Card bgColor={"#0F172A"} title="Tailwind" desc="Tailwind CSS adalah framework utility-first yang menyediakan kelas siap pakai untuk styling cepat, konsisten, dan mudah dikustomisasi langsung dari markup." srcc={tailwind} /> */}
+        
       </Slider>
+    </div>
+
+    <div className='w-full h-screen'>
+        <h1 className='my-10 relative top-5' id='project'>Projects</h1>
+        
+        <div className='flex justify-center relative'>
+          <div className={`w-200 h-70 bg-linear-0 z-20 to-[#5ED8F9] from-[#039AC4] rounded-3xl mx-auto flex justify-center relative top-40 transition-all duration-300 ease-out ${open ? 'scale-120 translate-y-10' : 'scale-100'}`}>
+            <button onClick={() => setOpen((!open))} className='absolute top-10 bg-[#0891D1] text-white text-3xl px-12 py-3 rounded-full shadow-[inset_0_0_10px_rgba(0,0,0,0.4)] font-bold'>Open</button>
+          </div>
+          <div className={`bg-red-500 absolute z-2 transition-all ease-out top-40 rounded-xl hover:scale-y-110  ${open ? '-translate-y-10 h-70 w-220 duration-400' : 'opacity-0 h-0  w-170 duration-300'} `}></div>
+          <div className={`bg-blue-500 absolute z-1 transition-al ease-out top-40 rounded-xl hover:scale-y-110  ${open ? '-translate-y-20 h-70 w-210 duration-500' : 'opacity-0 h-0 w-170 duration-300'} `}></div>
+          <div className={`bg-green-500 absolute z-0 transition-all ease-out top-40  rounded-xl hover:scale-y-110 ${open ? '-translate-y-30 h-70 w-200 duration-600' : 'opacity-0 h-0 w-170 duration-300'} `}></div>
+        </div>
     </div>
   </div>
  ) 
