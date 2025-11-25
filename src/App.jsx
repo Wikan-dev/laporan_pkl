@@ -78,11 +78,11 @@ const [open, setOpen] = useState(false);
     <div className='lg:flex flex-row justify-between mb-5 '>
       <img src={logo_ti} alt="ti" />
       <div className='hidden lg:flex flex-row mt-3 gap-[122px]'>
-        <a href="#">Home</a>
-        <a href="#">Tools</a> 
+        <h1 className='cursor-pointer'>Home</h1>
+        <a href="#info">Informasi Umum</a>
+        <a href="#Tools">Tools</a> 
         <a href="#project">Projects</a>
-        <a href="#">Informasi Umum</a>
-        <a href="#">Penutup</a>
+        <a href="#footer">Penutup</a>
       </div>
     </div>
 
@@ -95,12 +95,12 @@ const [open, setOpen] = useState(false);
           <h1 className='lg:text-[48px] font-bold'>BTW Edutech</h1>
           <h1 className='lg:text-[20px] lg:mt-8'>By - Gede Jnana Wikan La Permana</h1>
         </div>
-        <img src={arrow} alt="arrow" className='bg-gray-100 rounded-full absolute right-0 bottom-0 hover:bg-gray-300 top-0 lg:top-10 scale-50 transition-all duration-300 ease-in-out' />
+        <img src={arrow} alt="arrow" onClick={() => document.getElementById('info')?.scrollIntoView({behavior: "smooth"})} className='bg-gray-100 rounded-full absolute right-0 bottom-0 hover:bg-gray-300 top-0 lg:top-10 scale-50 lg:scale-100 transition-all duration-300 ease-in-out' />
       </div>
     </div>
 
     <div className='h-screen'>
-      <h1 className='my-10 relative top-5'>Informasi Umum</h1>
+      <h1 id='info' className='my-10 relative top-5'>Informasi Umum</h1>
       <div className='flex lg:flex-row flex-col gap-10'>
         <div className='lg:w-180 h-90 shrink-0 flex justify-center items-center bg-gray-400 lg:rounded-br-[45px] shadow-[inset_0_0px_10px_rgba(0,0,0,0.6)]'>
           <img src={logo} alt="logo" className='drop-shadow-xl/50 max-w-full max-h-full object-contain'/>
@@ -129,7 +129,7 @@ const [open, setOpen] = useState(false);
     </div>
 
     <div className='mb-30 px-4 mt-230 lg:mt-0'>
-      <h1 className='lg:my-5 relative top-5'>Tools</h1>
+      <h1 id='Tools' className='lg:my-5 relative top-5'>Tools</h1>
       <Slider {...Settings}>
         {CardDetail.map((item, i) => (
           <Card key={i} {...item} />
@@ -142,12 +142,12 @@ const [open, setOpen] = useState(false);
         <h1 className='lg:my-10 relative lg:top-5' id='project'>Projects</h1>
         
         <div className='flex justify-center relative -top-20 my-10'>
-          <div className={`lg:w-200 w-70 h-50 lg:h-70 bg-linear-0 z-20 to-[#5ED8F9] from-[#039AC4] rounded-3xl mx-auto flex justify-center relative top-40 transition-all duration-300 ease-out ${open ? 'scale-120 translate-y-10' : 'scale-100'}`}>
+          <div className={`lg:w-200 w-70 h-50 lg:h-70 bg-linear-0 z-20 to-[#5ED8F9] from-[#039AC4] rounded-3xl mx-auto flex justify-center relative top-40 transition-all duration-300 ease-out ${open ? 'drop-shadow-2xl/50 scale-120 translate-y-10' : 'scale-100'}`}>
             <button onClick={() => setOpen((!open))} className='absolute top-10 bg-[#0891D1] text-white text-xl lg:text-3xl px-12 py-3 rounded-full shadow-[inset_0_0_10px_rgba(0,0,0,0.4)] font-bold'>Open</button>
           </div>
-          <div className={`bg-red-500 absolute z-2 transition-all ease-out top-40 rounded-xl hover:scale-y-110  ${open ? '-translate-y-10 h-70 w-65 lg:w-220 duration-400' : 'opacity-0 h-0  w-30 duration-300'} `}></div>
-          <div className={`bg-blue-500 absolute z-1 transition-al ease-out top-40 rounded-xl hover:scale-y-110  ${open ? '-translate-y-20 h-70 w-55 duration-500' : 'opacity-0 h-0 w-30 duration-300'} `}></div>
-          <div className={`bg-green-500 absolute z-0 transition-all ease-out top-40  rounded-xl hover:scale-y-110 ${open ? '-translate-y-30 h-70 w-45 duration-600' : 'opacity-0 h-0 w-30 duration-300'} `}></div>
+          <div className={`bg-amber-200 absolute z-2 transition-all ease-out top-40 rounded-xl hover:scale-y-110 drop-shadow-2xl shadow-[0_-5px_20px_rgba(0,0,0,0.2)] flex justify-center ${open ? '-translate-y-10 h-70 w-65 lg:w-220 duration-400' : 'opacity-0 h-0  w-30 duration-300'} `}><a href='https://wikan-dev.github.io/PokemonPixelArtGame/' className='text-center text-3xl font-bold mt-4'>Pokemon Pixel-art</a></div>
+          <div className={`bg-amber-200 absolute z-1 transition-al ease-out top-40 rounded-xl hover:scale-y-110 shadow-[0_-5px_20px_rgba(0,0,0,0.2)] flex justify-center ${open ? '-translate-y-20 h-70 w-55 lg:w-210 duration-500' : 'opacity-0 h-0 w-30 duration-300'} `}><a href='https://wikan-dev.github.io/hatchingWeb/' className=' text-3xl font-bold mt-4'>Slicing Website</a></div>
+          <div className={`bg-amber-200 absolute z-0 transition-all ease-out top-40  rounded-xl hover:scale-y-110 flex justify-center ${open ? '-translate-y-30 h-70 w-45 lg:w-200 duration-600' : 'opacity-0 h-0 w-30 duration-300'} `}><a href='https://wikan-dev.github.io/simple-clock-js/' className=' text-3xl font-bold mt-4'>Projek latihan</a></div>
         </div>
     </div>
 
@@ -155,7 +155,7 @@ const [open, setOpen] = useState(false);
 
     <div className=' bg-black w-full absolute left-0 p-10 flex flex-row justify-between'>
       <div className='text-white w-100 leading-7 flex flex-col gap-10'>
-      <h1 className='relative'>Penutup</h1>
+      <h1 id='footer' className='relative'>Penutup</h1>
         <div>
           <h1 className='font-bold'>Kesan dan Pesan Selama PKL</h1>
           <p>
